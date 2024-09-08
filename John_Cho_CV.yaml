@@ -1,0 +1,121 @@
+cv:
+  name: John Cho
+  location: Hamilton, ON
+  email: johnnychox@gmail.com
+  phone: tel:+1-(226)-340-6077
+  social_networks:
+    - network: LinkedIn
+      username: john-cho
+    - network: GitHub
+      username: chosterto
+  sections:
+    education:
+      - institution: McMaster University
+        area: Software Engineering
+        degree: BS
+        start_date: 2022-09
+        end_date: 2027-05
+        highlights:
+          - '**GPA:** 3.9/4.0'
+          - '**Coursework:** Computer Architecture, Discrete Math, Object-Oriented Programming,
+            Data Structures and Algorithms, Linear Optimization, Digital Signals and Systems'
+    extracurriculars:
+      - company: '[McMaster Mars Rover Team](https://www.marsatmac.ca/)'
+        position: Software Team Lead
+        location: Hamilton, ON
+        start_date: 2022-11
+        end_date: present
+        highlights:
+          - 'Lead a team of 5 people to successfully enhance and maintain current rover software stack using tools
+            such as Git and Kanban boards'
+          - 'Used ROS 2 to develop complex control systems for the rover such as automonous 3D mapping with SLAM, 
+            2D GPS mapping (mapviz), and point-to-point navigation with obstacle avoidance'
+          - 'Developed firmware for sensor boards to communicate GPS, IMU, and temperature data over ethernet using
+            micro-ROS and control custom motor controller boards over CAN bus'
+          - 'Team placed 1st in Canada (4th overall) at [Summer CIRC 2023](https://circ.cstag.ca/2023/) and
+            2nd at [Winter CIRC 2024](https://circ.cstag.ca/2024-winter/)'
+      - company: '[FIRST Robotics Competition](https://www.firstinspires.org/robotics/frc)'
+        position: Programming Leader
+        location: LaSalle, ON
+        start_date: 2018-10
+        end_date: 2022-06
+        highlights:
+          - 'Member and leader of the programming section for FRC Team 772, the [Sabre Bytes](https://www.sabrerobotics.com/)'
+          - 'Drive Team Operator for 2021-2022 season, Rapid React'
+          - 'Wrote commands to control drivetrain, flywheel, turret, and intake subsystems of robots using WPILibC++'
+          - 'Mainly responsible for PID and vision control of turret to automatically aim and shoot balls into the Hub
+            using data from motor encoders and limelight cameras'
+    experience:
+      - company: '[STEM Camp](https://stemcamp.ca/)'
+        position: Camp Counselor
+        location: Hamilton, ON
+        start_date: 2023-07
+        end_date: 2023-08
+        highlights:
+          - 'Managed a group of 20 to 30 kids interested in learning STEM'
+          - 'Taught basic programming concepts using MakeCode'
+          - 'Helped campers utilize micro:bit microcontrollers to control motors, servos, pumps, and sensors to complete
+            a variety of tasks such as making automated robots to plant seeds, basic wind turbines, and water plant dispensers'
+    projects:
+      - name: '[Minecraft Turing Machine](https://drive.google.com/drive/folders/1CYcbyKpHjH-DZPU5JNhlTpTpQmKvzFWN)'
+        highlights:
+          - 'Created a Turing Machine using Minecraft redstone, complete with a functional memory tape and
+            8-bit register to store current state, read symbol, and tape direction'
+          - 'Program is a FSM (Finite-state machine) with 14 states which accepts the language or set of strings'
+          - 'Utilized many concepts in digital systems and discrete math such as combinational logic, k-maps, and state
+            minimization'
+      - name: '[Pure Pursuit Path Controller](https://github.com/chosterto/PurePursuitTracking)'
+        highlights:
+          - 'Implemented a controller of the pure pursuit path following algorithm for a differential drive system'
+          - 'Works by inputting a set of waypoints, then calculates a smooth path for the robot to follow while feeding
+            back constant odometry data to keep track of its position relative to the path'
+          - 'Used by FIRST Robotics Team 772 to successfully traverse and collect balls around the field in autonomous mode
+            (video demonstration [here](https://drive.google.com/file/d/1KtWkwZrmCklio3peCb4nabCr_LRlsecF/view))'
+      - name: '[Polynomial Regression Calculator](https://github.com/chosterto/Regression-Analyzer)'
+        highlights:
+          - 'Python script that takes in a CSV file of x and y values and outputs a polynomial that best fits the set of points'
+          - 'Calculates coefficients of polynomial equation using matrix operations'
+          - 'Uses Bayesian information criterion to select a desired model and  prevent overfitting the data'
+          - 'Used by FIRST Robotics Team 772 to find relationship between distance of Hub and flywheel speed needed to
+            shoot balls into the Hub'
+    skills:
+      - label: Languages
+        details: C++, C, Java, Python, Verilog, Bash, YAML
+      - label: Technologies
+        details: ROS, ROS 2, micro-ROS, Git, CMake, SSH, Arduino IDE, STM32CubeIDE, Linux, SLAM, PID, SPI, I2C, CAN, UART
+design:
+  theme: engineeringresumes
+  font: Charter
+  font_size: 10pt
+  page_size: letterpaper
+  color: black
+  disable_external_link_icons: true
+  disable_page_numbering: true
+  page_numbering_style: NAME - Page PAGE_NUMBER of TOTAL_PAGES
+  disable_last_updated_date: true
+  last_updated_date_style: Last updated in TODAY
+  header_font_size: 25 pt
+  text_alignment: left-aligned
+  seperator_between_connections: $|$
+  use_icons_for_connections: false
+  margins:
+    page:
+      top: 2 cm
+      bottom: 2 cm
+      left: 2 cm
+      right: 2 cm
+    section_title:
+      top: 0.3 cm
+      bottom: 0.2 cm
+    entry_area:
+      left_and_right: 0 cm
+      vertical_between: 0.2 cm
+      date_and_location_width: 4.5 cm
+    highlights_area:
+      top: 0.10 cm
+      left: 0 cm
+      vertical_between_bullet_points: 0.10 cm
+    header:
+      vertical_between_name_and_connections: 5 pt
+      bottom: 5 pt
+      horizontal_between_connections: 10 pt

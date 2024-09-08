@@ -1,0 +1,345 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={John Cho's CV},
+    pdfauthor={John Cho},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+\newcommand{\customref}[3][primaryColor]{\href{#2}{\color{#1}{\underline{#3}}}}
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont John Cho \\
+        \normalsize
+        3$^{\text{rd}}$ Year Software Engineering Student at McMaster University
+        \vspace{5 pt}
+
+        \mbox{Hamilton, ON}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\customref{mailto:johnnychox@gmail.com}{johnnychox@gmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\customref{tel:+1-226-340-6077}{(226) 340-6077}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\customref{https://www.linkedin.com/in/john-cho-7411a224b/}{linkedin.com/in/john-cho}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\customref{https://github.com/chosterto}{github.com/chosterto}}%
+    \end{header}
+
+    \vspace{5 pt}
+
+
+    \section{Education}
+
+
+
+        
+        \begin{twocolentry}{
+            Sept 2022 – May 2027
+        }
+            \textbf{McMaster University}, BS in Software Engineering\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{GPA:} 3.9/4.0
+                \item \textbf{Coursework:} Computer Architecture, Discrete Math, Object-Oriented Programming, Data Structures and Algorithms, Linear Optimization, Digital Signals and Systems
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Extracurriculars}
+
+
+
+        
+        \begin{twocolentry}{
+            Nov 2022 – present
+        }
+            \textbf{Software Team Lead}, \textbf{\customref{https://www.marsatmac.ca/}{McMaster Mars Rover Team}} -- Hamilton, ON\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Lead a team of 5 people to successfully enhance and maintain current rover software stack using tools such as Git and Kanban boards
+                \item Used ROS 2 to develop complex control systems for the rover such as automonous 3D mapping with SLAM, 2D GPS mapping (mapviz), and point-to-point navigation with obstacle avoidance
+                \item Developed firmware for sensor boards to communicate GPS, IMU, and temperature data over ethernet using micro-ROS and control custom motor controller boards over CAN bus
+                \item Team placed 1$^{\text{st}}$ in Canada (4th overall) at \customref{https://circ.cstag.ca/2023/}{Summer CIRC 2023} and 2$^{\text{nd}}$ at \customref{https://circ.cstag.ca/2024-winter/}{Winter CIRC 2024}
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Oct 2018 – June 2022
+        }
+            \textbf{Programming Leader}, \textbf{\customref{https://www.firstinspires.org/robotics/frc}{FIRST Robotics Competition}} -- LaSalle, ON\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Member and leader of the programming section for FRC Team 772, the \href{https://www.sabrerobotics.com/}{Sabre Bytes}
+                \item Drive Team Operator for 2021-2022 season, Rapid React
+                \item Wrote commands to control drivetrain, flywheel, turret, and intake subsystems of robots using WPILibC++
+                \item Mainly responsible for PID and vision control of turret to automatically aim and shoot balls into the Hub using data from motor encoders and limelight cameras
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Experience}
+
+
+
+        
+        \begin{twocolentry}{
+            July 2023 – Aug 2023
+        }
+            \textbf{Camp Counselor}, \textbf{\customref{https://stemcamp.ca/}{STEM Camp}} -- Hamilton, ON\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Managed a group of 20 to 30 kids interested in learning STEM
+                \item Taught basic programming concepts using MakeCode
+                \item Helped campers utilize micro:bit microcontrollers to control motors, servos, pumps, and sensors to complete a variety of tasks such as making automated robots to plant seeds, basic wind turbines, and water plant dispensers
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Projects}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{\customref{https://drive.google.com/drive/folders/1CYcbyKpHjH-DZPU5JNhlTpTpQmKvzFWN}{Minecraft Turing Machine}}\end{onecolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Created a Turing Machine using Minecraft redstone, complete with a functional memory tape and 8-bit register to store current state, read symbol, and tape direction
+                \item Program is a FSM (Finite-state machine) with 14 states which accepts the language or set of strings $\mathcal{L} = \left\{a^{n}b^{n}c^{n} \ | \ n \geq 0 \right\}$
+                \item Utilized many concepts in digital systems and discrete math such as combinational logic, k-maps, and state minimization
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{\customref{https://github.com/chosterto/PurePursuitTracking}{Pure Pursuit Path Controller}}\end{onecolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Implemented a controller of the pure pursuit path following algorithm for a differential drive system
+                \item Works by inputting a set of waypoints, then calculates a smooth path for the robot to follow while feeding back constant odometry data to keep track of its position relative to the path
+                \item Used by FIRST Robotics Team 772 to successfully traverse and collect balls around the field in autonomous mode (video demonstration \textbf{\customref{https://drive.google.com/file/d/1KtWkwZrmCklio3peCb4nabCr_LRlsecF/view}{here}})
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{\customref{https://github.com/chosterto/Regression-Analyzer}{Polynomial Regression Calculator}}\end{onecolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Python script that takes in a CSV file of x and y values and outputs a polynomial that best fits the set of points
+                \item Calculates coefficients of polynomial equation using matrix operations
+                \item Uses Bayesian information criterion to select a desired model and  prevent overfitting the data
+                \item Used by FIRST Robotics Team 772 to find relationship between distance of Hub and flywheel speed needed to shoot balls into the Hub
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Skills}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{Languages:} C++, C, Java, Python, Verilog, Bash, YAML
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Technologies:} ROS, ROS 2, micro-ROS, Git, CMake, SSH, Arduino IDE, STM32CubeIDE, Linux, SLAM, PID, SPI, I2C, CAN, UART
+        \end{onecolentry}
+
+
+    
+
+\end{document}

@@ -3,3 +3,8 @@
 *.fls
 *.log
 *.synctex.gz
+
+__pycache__/
+rendercv_output/
+markdown/
+classic/
