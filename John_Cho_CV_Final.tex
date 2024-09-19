@@ -3,10 +3,10 @@
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=1.5 cm, % seperation between body and page edge from the top
-    bottom=1.5 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
+    top=0.5 cm, % seperation between body and page edge from the top
+    bottom=0.5 cm, % seperation between body and page edge from the bottom
+    left=0.5 cm, % seperation between body and page edge from the left
+    right=0.5 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
     % showframe % for debugging 
 ]{geometry} % for adjusting page geometry
@@ -63,11 +63,19 @@
     -1pt
 }{
     % top space:
-    0.3 cm
+    0.1 cm
 }{
     % bottom space:
-    0.2 cm
+    0.1 cm
 } % section title spacing
+
+% May 2025, 4-16 month
+% Add skills in description
+% List of top 20 companies
+% Add dates to Projects
+% Bachelor Degree
+% mcmaster email instead of gmail
+% Networking
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
 \newenvironment{highlights}{
@@ -164,7 +172,7 @@
     \begin{header}
         \fontsize{25 pt}{25 pt}\selectfont John Cho \\
         \normalsize
-        3$^{\text{rd}}$ Year Software Engineering Student at McMaster University
+        3$^{\text{rd}}$ Year Software Co-op Engineering Student at McMaster University
         % \vspace{5 pt}
 
         \mbox{Hamilton, ON}%
@@ -193,11 +201,10 @@
 
 
 
-        \fontsize{9 pt}{9 pt}\selectfont
         \begin{twocolentry}{
             Sept 2022 – May 2027
         }
-            \textbf{McMaster University}, BS in Software Engineering\end{twocolentry}
+            \textbf{Bachelor in Software Engineering, McMaster University}\end{twocolentry}
 
         \vspace{0.10 cm}
         \begin{onecolentry}
@@ -244,7 +251,7 @@
                 \item Member and leader of the programming section for FRC Team 772, the \href{https://www.sabrerobotics.com/}{Sabre Bytes}
                 \item Drive Team Operator for 2021-2022 season, Rapid React
                 \item Wrote commands to control drivetrain, flywheel, turret, and intake subsystems of robots using WPILibC++
-                \item Mainly responsible for PID and vision control of turret to automatically aim and shoot balls into the Hub using data from motor encoders and limelight cameras
+                \item Mainly responsible for PID and vision control of turret to automatically aim and shoot balls into Hub using data from motor encoders and limelight cameras
             \end{highlights}
         \end{onecolentry}
 
@@ -317,7 +324,7 @@
                 \item Python script that takes in a CSV file of x and y values and outputs a polynomial that best fits the set of points
                 \item Calculates coefficients of polynomial equation using matrix operations
                 \item Uses Bayesian information criterion to select a desired model and  prevent overfitting the data
-                \item Used by FIRST Robotics Team 772 to find relationship between distance of Hub and flywheel speed needed to shoot balls into the Hub
+                \item Used by FIRST Robotics Team 772 to find relationship between distance of Hub and flywheel speed needed to shoot balls into Hub
             \end{highlights}
         \end{onecolentry}
 
@@ -333,7 +340,7 @@
             \textbf{Languages:} C++, C, Java, Python, Verilog, Bash, YAML, UML
         \end{onecolentry}
 
-        \vspace{0.2 cm}
+        % \vspace{0.2 cm}
 
         \begin{onecolentry}
             \textbf{Technologies:} ROS, ROS 2, micro-ROS, Git, CMake, SSH, Arduino IDE, STM32CubeIDE, Linux, Docker, SLAM, 
