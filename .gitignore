@@ -4,5 +4,11 @@
 *.log
 *.synctex.gz
 *.synctex(busy)
-
+*.out
+*.tex
+*.pdf
+!John_Cho_CV_Final.pdf
+!John_Cho_CoverTemplate.pdf
+!John_Cho_CV_Final.tex
+!John_Cho_CoverTemplate.tex
 __pycache__/
